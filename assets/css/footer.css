@@ -1,0 +1,48 @@
+footer{
+    display: flex;
+    justify-content: space-around;
+    width: 90%;
+    padding-bottom: 2em;
+    margin: auto;
+    font-size: clamp(.5rem, 1.5vw, 1rem);
+}
+footer a{
+    text-decoration: none;
+    color: black;
+}
+footer li{
+    margin: 1em 0;
+}
+footer h4{
+    font-size: clamp(0.7rem, 1.5vw, 1.1rem);
+}
+
+.contact{
+    flex-shrink: 0;
+    /* width: clamp(20em, 30dvw, 25em); */
+}
+.contact>ul>li>span{
+    font-size: clamp(.5rem, 1.5vw, 1rem);
+}
+.mid-footer{
+    flex-shrink: 0;
+    width: clamp(20em, 30dvw, 25em);
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+}
+
+.contact ul, .footer-categories ul, .footer-links ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+@media screen and (max-width: 800px){
+    .footer-logo{
+        display: none;
+    }
+    .contact, .mid-footer{
+        
+    }
+}

@@ -1,0 +1,121 @@
+/* nav */ 
+
+.top-nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: white;
+    height: 2.5em;
+}
+.search-form{
+    display: flex;
+    align-items: center;
+}
+.search-form>button{
+    position: relative;
+    right: 2.5em;
+    top: 0.1em;
+    color: var(--secoundaryColor);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+.search-input{
+    border: 1px solid;
+    border-radius: 15px;
+    padding: 0.3em 1.2em;
+    outline: none;
+}
+.menu-btn{
+    display: none;
+}
+.close-btn{
+    display: none;
+}
+nav{
+    position: sticky;
+    top: 0;
+    background-color: var(--mainColor);
+    z-index: 999;
+}
+nav>.logo{
+    display: none;
+}
+nav>ul{
+    display: flex;
+    list-style: none;
+    justify-content: center;
+}
+nav>ul>li{
+    padding: 1.5em 0;
+    margin-left: 1.5em;
+}
+nav>ul>li>a{
+    text-decoration: none;
+    color: var(--secoundaryColor);
+}
+nav>ul>li>a::after{
+    content: "";
+    display: block;
+    width: 0;
+    height: 2px;
+    background-color: var(--secoundaryColor);
+    transition: width 0.5s ease-in-out;
+}
+nav>ul>li>a:hover::after{
+    width: 100%;
+}
+
+@media screen and (max-width: 800px){
+    .top-nav>.logo{
+        display: none;
+    }
+    nav>.logo{
+        display: block;
+        position: relative;
+        width: 40dvw;
+        top: 1em;
+        left: 1em;
+        letter-spacing: 0.2em;
+        font-size: 1rem;
+        font-weight: bold;
+        color: var(--diffrentColor);
+    }
+    .menu-btn{
+        display: block;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+    }
+    nav{
+        display: none;
+        position: absolute;
+        width: 100dvw;
+        background-color: #2C3E50; 
+    }
+    .show-nav{
+        display: block;
+    }
+    .close-btn{
+        display: block;
+        position: absolute;
+        right: 3em;
+        top: 1em;
+        border: none;
+        border-radius: 1em;
+        color: var(--diffrentColor);
+        background-color: transparent;
+        cursor: pointer;
+    }
+    nav>ul{
+        flex-direction: column;
+        align-items: center;
+        padding-top: 1em;
+    }
+    nav>ul>li>a{
+        color: var(--mainColor);
+    }
+    nav>ul>li>a::after{
+        background-color: var(--mainColor);
+    }
+}

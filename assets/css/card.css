@@ -1,0 +1,80 @@
+/* cards  */
+.cards{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2em;
+    padding: 1em 0;
+}
+.cards>.card{
+    border-radius: 10px;
+    width: clamp(15em, 50dvw, 20em);
+    border: 1px solid var(--secoundaryColor);
+    transition: 0.8s ease-in-out;
+}
+.cards>.card:hover{
+    box-shadow: 0 0 10px var(--secoundaryColor);
+    transform: translate(0, -5px);
+}
+.inner-card{
+    padding: 0.6em;
+}
+.card-img>img{
+    border-radius: 10px;
+}
+.cards>.card>p{
+    color: var(--typoColor);
+    margin-top: 0.5em;
+}
+.inner-card>p{
+    margin: 1em 0;
+}
+.inner-card>.bottom-card{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2em;
+}
+.bottom-card>p{
+    font-weight: normal;
+    font-size: 1rem;
+}
+
+.bottom-card>button{
+    border: none;
+    background-color: var(--secoundaryColor);
+    color: var(--typoColor);
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 0.4em 1.6em;
+    border-radius: 5px;
+    cursor: pointer;
+}
+@media screen and (max-width: 800px){
+    .cards>.card{
+        width: 100%;
+    }
+    .cards>.card>.inner-card{
+        display: grid;
+        grid-template-areas: 
+        "img img img txt"
+        "img img img txt"
+        "btm btm btm btm";
+        align-items: flex-start;
+    }
+    .card-img{
+        grid-area: img;
+        margin-right: 1em;
+    }
+    .inner-card>p{
+        grid-area: txt;
+        margin: 0;
+    }
+    .bottom-card{
+        grid-area: btm;
+    }
+    .bottom-card>button{
+        font-size: clamp(0.8rem, 2dvw, 1rem);
+    }
+}
