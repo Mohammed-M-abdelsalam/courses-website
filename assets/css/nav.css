@@ -49,6 +49,7 @@ nav>ul{
 nav>ul>li{
     padding: 1.5em 0;
     margin-left: 1.5em;
+    cursor: pointer;
 }
 nav>ul>li>a{
     text-decoration: none;

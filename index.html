@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
     <script src="assets/js/nav.js" defer></script>
     <script src="assets/js/loading.js" defer></script>
+    <script src="assets/js/routing.js" defer></script>
 </head>
 <body>
     <div class="top-nav">
@@ -28,105 +29,16 @@
         </button>
         <div class="logo" aria-label="Website Logo">LOGO</div>
         <ul>
-            <li id="home"> <a href="" aria-label="Home"> Home </a> </li>
-            <li id="about"> <a href="" aria-label="Courses"> courses </a> </li>
-            <li id="about"> <a href="" aria-label="About Us"> About Us </a> </li>
-            <li id="about"> <a href="" aria-label="Profile"> Profile </a> </li>
-            <li id="about"> <a href="" aria-label="Make Course"> make course </a> </li>
+            <li id="home"> <a aria-label="Home"> Home </a> </li>
+            <li id="courses"> <a aria-label="Courses"> courses </a> </li>
+            <li id="about"> <a aria-label="About Us"> About Us </a> </li>
+            <li id="profile"> <a aria-label="Profile"> Profile </a> </li>
+            <li id="make-course"> <a aria-label="Make Course"> make course </a> </li>
         </ul>
     </nav>
-    <div class="root">
-        <header>
-            <div class="bottom-header">
-                <h1>Empowering Minds for a Brighter Future</h1>
-                <img src="./assets/images/header_img.svg" width="50%" alt="pic">
-            </div>
-        </header>
 
-        <main>
-            <div class="right-main">
-                <div class="text">
-                    <h2>Lorem</h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                </div>
-                <button class="aboutus-btn">About Us</button>
-            </div>
-            <div class="left-main">
-                <img src="assets/images/main-home.webp" width="100%" alt="pic">
-            </div>
-        </main>
-
-        <section class="popular-courses">
-            <h2>Popular Courses</h2>
-            <div class="cards">
-                <div class="card">
-                    <div class="inner-card">
-                        <div class="card-img">
-                            <img src="assets/images/card.webp" width="100%" alt="pic">
-                        </div>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum...</p>
-                        <div class="bottom-card">
-                            <p>Web Development</p>
-                            <button>Enroll Now</button>
-                        </div>  
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="inner-card">
-                        <div class="card-img">
-                            <img src="assets/images/card.webp" width="100%" alt="pic">
-                        </div>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum...</p>
-                        <div class="bottom-card">
-                            <p>Web Development</p>
-                            <button>Enroll Now</button>
-                        </div>  
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="inner-card">
-                        <div class="card-img">
-                            <img src="assets/images/card.webp" width="100%" alt="pic">
-                        </div>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum...</p>
-                        <div class="bottom-card">
-                            <p>Web Development</p>
-                            <button>Enroll Now</button>
-                        </div>  
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="courses-categories">
-            <h2>Categories</h2>
-            <div class="category-cards">
-
-                <div class="category-card">
-                    <h4>Marketing</h4>
-                    <p>Lorem Ipsum is simply dummy text </p>
-                    <button>more</button>
-                </div>
-                <div class="category-card">
-                    <h4>Web Development</h4>
-                    <p>Lorem Ipsum is simply dummy text </p>
-                    <button>more</button>
-                </div>
-                <div class="category-card">
-                    <h4>Fitness</h4>
-                    <p>Lorem Ipsum is simply dummy text </p>
-                    <button>more</button>
-                </div>
-                <div class="category-card">
-                    <h4>UI/UX</h4>
-                    <p>Lorem Ipsum is simply dummy text </p>
-                    <button>more</button>
-                </div>
-            </div>
-            <button>View All</button>
-        </section>
-        
-    </div>
+    <!-- the root of the website -->
+    <div id="root"></div>
 
     <footer>
 

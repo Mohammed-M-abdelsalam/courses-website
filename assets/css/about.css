@@ -1,0 +1,99 @@
+/* main about */
+.main-about{
+    text-align: center;
+    background-color: var(--mainColor);
+    height: calc(100vh - 10rem);
+    place-content: center;
+    margin-bottom: 1em;
+}
+.main-about .top-main{
+    padding: 20px 0px;
+    width: 80dvw;
+    margin: auto;
+}
+.main-about .top-main h1{
+    font-size: clamp(1.5rem, 5vw, 3rem);
+    font-weight: bolder;
+}
+.main-about .top-main p{
+    font-size: clamp(0.5rem, 4vw, 1rem);
+}
+.main-about .ourmission{
+    padding: 20px 0px;
+    width: 80dvw;
+    margin: auto;
+}
+.main-about .ourmission h2{
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    font-weight: bolder;
+}
+.main-about .ourmission p{
+    font-size: clamp(0.5rem, 4vw, 1rem);
+    width: clamp(20em, 50dvw, 30em);
+    margin: auto;
+    line-height: 1.5;
+}
+
+/* statistics */
+.statistics{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1em;
+    width: 80dvw;
+    margin: auto;
+    padding: 1em 0;
+    margin-bottom: 1em;
+}
+
+.statistics>.box{
+    border: none;
+    background-color: var(--secoundaryColor);
+    color: var(--typoColor);
+    border-radius: 5px;
+    margin-top: 1em;
+    padding: 0.5em 2em;
+    font-weight: bold;
+    text-align: center;
+}
+.statistics>.box{
+    border-radius: 10px;
+    width: clamp(15em, 50dvw, 20em);
+    border: 1px solid var(--secoundaryColor);
+}
+
+/* why us */
+.why-us{
+    text-align: center;
+    width: 80dvw;
+    margin: 2em auto;
+    padding: 1em 0;
+}
+.why-us h2{
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    font-weight: bolder;
+    margin-bottom: 1em;
+    color: var(--secoundaryColor);
+}
+.why-us .boxes{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+.why-us .boxes .box{
+    place-content: center;
+    width: clamp(15em, 50dvw, 15em);
+    height: clamp(10em, 50dvw, 15em);
+    color: var(--typoColor);
+    background-color: var(--secoundaryColor);
+    line-height: 1.5;
+}
+.why-us .box h3{
+    margin-bottom: 0.5em;
+}
+.why-us .box span{
+    font-size: clamp(3rem, 5vw, 4rem);
+}
