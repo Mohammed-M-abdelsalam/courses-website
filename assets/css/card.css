@@ -20,6 +20,16 @@
 .inner-card{
     padding: 0.6em;
 }
+.card-img{
+    position: relative;
+}
+.card-img>span{
+    position: absolute;
+    right: 0;
+    top: 0.5em;
+    border-radius: 1em;
+    padding: 0.2em;
+}
 .card-img>img{
     border-radius: 10px;
 }
@@ -66,6 +76,16 @@
     .card-img{
         grid-area: img;
         margin-right: 1em;
+    }
+    .card-img>span{
+        position: absolute;
+        left: 0;
+        top: 4.5em;
+        border-radius: 0;
+        padding: 0.2em 0.8em;
+    }
+    .card-img>img{
+        border-radius: 0px;
     }
     .inner-card>p{
         grid-area: txt;
