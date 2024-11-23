@@ -165,9 +165,9 @@ function renderCourses(list) {
         if(el.level === 'beginner'){
             style = {color: '#22543D', backgroundColor: '#C6F6D5'}
         }else if(el.level === 'intermediate'){
-            style = {color: '#742A2A', backgroundColor: '#FED7D7'}
-        }else if(el.level === 'advanced'){
             style = {color: '#744210', backgroundColor: '#FEEBC8'}
+        }else if(el.level === 'advanced'){
+            style = {color: '#742A2A', backgroundColor: '#FED7D7'}
         }
         const {color, backgroundColor} = style;
         return(
