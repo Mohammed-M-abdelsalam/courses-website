@@ -12,10 +12,10 @@ function closeAside(){
     removeEventListener('click', () => aside.classList.remove('show-aside'));
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+export function toggleAside(){
     showAside();
     closeAside();
-});
+}
 
 // filtering
 export function getLevel(list, renderCourses, filterCourses){

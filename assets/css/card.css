@@ -78,9 +78,7 @@
         margin-right: 1em;
     }
     .card-img>span{
-        position: absolute;
-        left: 0;
-        top: 4.5em;
+        position: static;
         border-radius: 0;
         padding: 0.2em 0.8em;
     }

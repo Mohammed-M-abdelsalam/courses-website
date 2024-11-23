@@ -145,7 +145,7 @@ function renderAboutPage(){
     `;
 }
 
-import { getLevel, filterCourses } from './filter-courses.js';
+import { getLevel, filterCourses, toggleAside } from './filter-courses.js';
 
 let list = [
     { id: 1, category: "Web Development", level: "beginner", desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum..." },
@@ -213,9 +213,11 @@ function renderCoursesPage() {
             </main>
         </section>
     `;
+    toggleAside();
     renderCourses(list);
     getLevel(list, renderCourses, filterCourses);
 }
+// renderCoursesPage();
 
 
 function route(){
@@ -233,6 +235,8 @@ function route(){
     });
 }
 
-renderHomePage();
-route();
+document.addEventListener('DOMContentLoaded', ()=>{
+    renderHomePage();
+    route();
+});
 
