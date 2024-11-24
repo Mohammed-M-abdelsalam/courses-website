@@ -11,4 +11,4 @@ function start(){
         cover.remove();
     }, 2000);
 }
-start();
+// start();

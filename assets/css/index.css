@@ -277,3 +277,72 @@ header{
         cursor: pointer;
     }
 }
+
+/* course details page */
+.course-details-main{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 80dvw;
+    margin: auto;
+    padding: 1em 0;
+}
+.course-details-main>.content{
+    width: clamp(15em, 50dvw, 20em);
+}
+.course-details-main>.content>h1{
+    font-size: 1.8rem;
+}
+.course-details-main>.content>p{
+    margin-top: 1em;
+}
+.course-details-main>.content>.parts{
+    margin: 1em 0;
+}
+.course-details-main>.content>.parts>ul{
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+}
+.course-details-main>.content>.parts>ul>li{
+    display: flex;
+    align-items: center;
+    margin: 0.5em 0;
+    width: 50%;
+}
+.course-details-main>.course-card{
+    border-radius: 0.5em;
+    width: clamp(15em, 50dvw, 20em);
+    padding: 0.5em;
+    border: 1px solid var(--secoundaryColor);
+}
+.course-details-main>.course-card img{
+    border-radius: 1em;
+}
+.course-details-main>.course-card .price{
+    font-size: 1.5rem;
+    font-weight: bolder;
+}
+.course-details-main>.course-card button{
+    border: none;
+    background-color: var(--secoundaryColor);
+    color: var(--typoColor);
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    padding: 0.4em 1.5em;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 800px){
+    .course-details-main{
+        flex-direction: column;
+        text-align: center;
+    }    
+    .recommendation-cards{
+        padding: 1em;
+    }
+}

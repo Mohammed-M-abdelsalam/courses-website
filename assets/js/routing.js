@@ -147,18 +147,22 @@ function renderAboutPage(){
 
 import { getLevel, filterCourses, toggleAside } from './filter-courses.js';
 
-let list = [
-    { id: 1, category: "Web Development", level: "beginner", desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum..." },
-    { id: 2, category: "Web Development", level: "advanced", desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum..." },
-    { id: 3, category: "Web Development", level: "advanced", desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum..." },
-    { id: 4, category: "UI/UX", level: "intermediate", desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum..." },
-    { id: 5, category: "UI/UX", level: "intermediate", desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum..." },
-    { id: 6, category: "UI/UX", level: "beginner", desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum..." },
-    { id: 7, category: "marketing", level: "beginner", desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum..." },
+const list = [
+    { id: 1, instractor: 'mohamed magdy', title: "lorem ipsm dolor sit", category: "Web Development", level: "beginner", price:200, desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum", parts: ['html', 'css', 'js'] },
+    { id: 2, instractor: 'mohamed magdy', title: "lorem ipsm dolor sit", category: "Web Development", level: "advanced", price:300, desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum", parts: ['html', 'css', 'js'] },
+    { id: 3, instractor: 'mohamed magdy', title: "lorem ipsm dolor sit", category: "Web Development", level: "advanced", price:450, desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum", parts: ['html', 'css', 'js'] },
+    { id: 4, instractor: 'mohamed magdy', title: "lorem ipsm dolor sit", category: "UI/UX", level: "intermediate", price:200, desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum",  parts: ['user experience', 'colors'] },
+    { id: 5, instractor: 'mohamed magdy', title: "lorem ipsm dolor sit", category: "UI/UX", level: "intermediate", price:300, desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum",  parts: ['user experience', 'colors'] },
+    { id: 6, instractor: 'mohamed magdy', title: "lorem ipsm dolor sit", category: "UI/UX", level: "beginner", price:100, desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum", parts: ['user experience', 'colors'] },
+    { id: 7, instractor: 'mohamed magdy', title: "lorem ipsm dolor sit", category: "marketing", level: "beginner", price:50, desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum", parts: ['market research', 'digital marketing'] },
+    { id: 8, instractor: 'mohamed magdy', title: "lorem ipsm dolor sit", category: "marketing", level: "beginner", price:150, desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum" , parts: ['market research', 'digital marketing']},
+    { id: 9, instractor: 'mohamed magdy', title: "lorem ipsm dolor sit", category: "marketing", level: "beginner", price:200, desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum" , parts: ['market research', 'digital marketing']},
+    { id: 10, instractor: 'mohamed magdy', title: "lorem ipsm dolor sit", category: "fitness", level: "beginner", price:200, desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum" , parts: ['stretching', 'exercieses', 'nutration']},
+    { id: 11, instractor: 'mohamed magdy', title: "lorem ipsm dolor sit", category: "fitness", level: "beginner", price:200, desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum" , parts: ['stretching', 'exercieses', 'nutration']},
+    { id: 12, instractor: 'mohamed magdy', title: "lorem ipsm dolor sit", category: "fitness", level: "beginner", price:200, desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum" , parts: ['stretching', 'exercieses', 'nutration']},
 ];
 
-function renderCourses(list) {
-    const cards = document.querySelector('.main-courses .cards');
+function renderCourses(list, cards, showCourseDetails) {
     if (!cards) return console.error('Cards container not found!');
     cards.innerHTML = list.map(el =>{ 
         let style = {};
@@ -178,15 +182,16 @@ function renderCourses(list) {
                     <span style="color: ${color}; background-color: ${backgroundColor};">${el.level}</span>
                     <img src="assets/images/card.webp" width="100%" alt="pic">
                 </div>
-                <p>${el.desc}</p>
+                <p>${el.desc.substr(0, 40)}...</p>
                 <div class="bottom-card">
                     <p>${el.category}</p>
-                    <button>Enroll Now</button>
+                    <button class="course-btn" data-id="${el.id}">Enroll Now</button>
                 </div>  
             </div>
         </div>
-    `);
+        `);
     }).join('');
+    showCourseDetails()
 }
 
 function renderCoursesPage() {
@@ -214,11 +219,60 @@ function renderCoursesPage() {
         </section>
     `;
     toggleAside();
-    renderCourses(list);
+    const cards = document.querySelector('.main-courses .cards');
+    renderCourses(list, cards, showCourseDetails);
     getLevel(list, renderCourses, filterCourses);
 }
-// renderCoursesPage();
 
+function renderCourseDetailsPage(id, list){
+    const root = document.querySelector('#root');
+    if (!root) return console.error('Root container not found!');
+    const course = list.find(el => {
+        return el.id === parseInt(id);
+    });
+    const {title, instractor, level, category, price, desc, parts} = course;
+    root.innerHTML = `
+        <main class="course-details-main">
+            <div class="content">
+                <h1>${title}</h1>
+                <p>${desc}</p>
+                <div style="display:flex; align-items:center;"> <span class="material-symbols-outlined">person</span> instructor: ${instractor}</div>
+                <div class="parts">
+                    <h3>What you will learn</h3>
+                    <ul>
+                        ${parts.map(el => `
+                            <li>
+                                <span style="color: #34A853" class="material-symbols-outlined">check</span>
+                                ${el}
+                            </li>`).join('')}                  
+                    </ul>
+                </div>
+            </div>
+            <div class="course-card">
+                <div class="img">
+                    <span>${level}</span>
+                    <img width="100%" src="assets/images/card.webp" alt="img" />
+                </div>
+                <div class="price"><span style="font-size:1rem">$</span>${price}</div>
+                <button>Buy Now</button>
+            </div>
+        </main>
+
+        <section class="recommendation-cards cards"></section>   
+    `
+    const cards = document.querySelector('.recommendation-cards');
+    const filterList = list.filter(el => el.category === category && el.id !== parseInt(id));
+    renderCourses(filterList, cards, showCourseDetails);
+}
+
+function showCourseDetails(){
+    const btn = document.querySelectorAll('.course-btn');
+    btn.forEach(el => {
+        el.addEventListener('click', function(){
+            renderCourseDetailsPage(el.dataset.id, list)
+        });
+    })
+}
 
 function route(){
     const navUl = document.querySelector('nav>ul');
