@@ -273,8 +273,7 @@ function route(){
 }
 
 document.addEventListener('DOMContentLoaded', ()=>{
-    // renderHomePage();
+    renderHomePage();
     renderCoursesPage();
-    route();
 });
 
