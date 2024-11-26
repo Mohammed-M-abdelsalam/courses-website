@@ -274,6 +274,6 @@ function route(){
 
 document.addEventListener('DOMContentLoaded', ()=>{
     renderHomePage();
-    renderCoursesPage();
+    route();
 });
 
