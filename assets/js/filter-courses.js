@@ -18,7 +18,9 @@ export function toggleAside(){
 }
 
 // filtering
+import { showCourseDetails } from './routing.js';
 export function getLevel(list, renderCourses, filterCourses){
+    const cards = document.querySelector('.main-courses .cards');
     const level = document.querySelectorAll('.courses-page aside .level ul li');
     level.forEach(el => {
         el.addEventListener('click', () => {
@@ -26,7 +28,7 @@ export function getLevel(list, renderCourses, filterCourses){
             el.classList.add('active-filter');             
             const selectedLevel = el.textContent.trim().toLowerCase();
             const filteredList = filterCourses(list, selectedLevel);
-            renderCourses(filteredList);
+            renderCourses(filteredList, cards, showCourseDetails);
         });
     });
 }

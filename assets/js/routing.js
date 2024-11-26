@@ -238,7 +238,7 @@ function renderCourseDetailsPage(id, list){
     renderCourses(filterList, cards, showCourseDetails);
 }
 
-function showCourseDetails(){
+export function showCourseDetails(){
     const btn = document.querySelectorAll('.course-btn');
     btn.forEach(el => {
         el.addEventListener('click', function(){
@@ -273,7 +273,8 @@ function route(){
 }
 
 document.addEventListener('DOMContentLoaded', ()=>{
-    renderHomePage();
+    // renderHomePage();
+    renderCoursesPage();
     route();
 });
 
