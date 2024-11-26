@@ -1,3 +1,20 @@
+import { getLevel, filterCourses, toggleAside } from './filter-courses.js';
+
+const list = [
+    { id: 1, instractor: 'mohamed magdy', title: "lorem ipsm dolor sit", category: "Web Development", level: "beginner", price:200, desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum", parts: ['html', 'css', 'js'] },
+    { id: 2, instractor: 'mohamed magdy', title: "lorem ipsm dolor sit", category: "Web Development", level: "advanced", price:300, desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum", parts: ['html', 'css', 'js'] },
+    { id: 3, instractor: 'mohamed magdy', title: "lorem ipsm dolor sit", category: "Web Development", level: "advanced", price:450, desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum", parts: ['html', 'css', 'js'] },
+    { id: 4, instractor: 'mohamed magdy', title: "lorem ipsm dolor sit", category: "UI/UX", level: "intermediate", price:200, desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum",  parts: ['user experience', 'colors'] },
+    { id: 5, instractor: 'mohamed magdy', title: "lorem ipsm dolor sit", category: "UI/UX", level: "intermediate", price:300, desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum",  parts: ['user experience', 'colors'] },
+    { id: 6, instractor: 'mohamed magdy', title: "lorem ipsm dolor sit", category: "UI/UX", level: "beginner", price:100, desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum", parts: ['user experience', 'colors'] },
+    { id: 7, instractor: 'mohamed magdy', title: "lorem ipsm dolor sit", category: "marketing", level: "beginner", price:50, desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum", parts: ['market research', 'digital marketing'] },
+    { id: 8, instractor: 'mohamed magdy', title: "lorem ipsm dolor sit", category: "marketing", level: "beginner", price:150, desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum" , parts: ['market research', 'digital marketing']},
+    { id: 9, instractor: 'mohamed magdy', title: "lorem ipsm dolor sit", category: "marketing", level: "beginner", price:200, desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum" , parts: ['market research', 'digital marketing']},
+    { id: 10, instractor: 'mohamed magdy', title: "lorem ipsm dolor sit", category: "fitness", level: "beginner", price:200, desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum" , parts: ['stretching', 'exercieses', 'nutration']},
+    { id: 11, instractor: 'mohamed magdy', title: "lorem ipsm dolor sit", category: "fitness", level: "beginner", price:200, desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum" , parts: ['stretching', 'exercieses', 'nutration']},
+    { id: 12, instractor: 'mohamed magdy', title: "lorem ipsm dolor sit", category: "fitness", level: "beginner", price:200, desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum" , parts: ['stretching', 'exercieses', 'nutration']},
+];
+
 function renderHomePage() {
     const root = document.querySelector('#root');
     root.innerHTML = `
@@ -23,45 +40,7 @@ function renderHomePage() {
 
         <section class="popular-courses">
             <h2>Popular Courses</h2>
-            <div class="cards">
-                <div class="card">
-                    <div class="inner-card">
-                        <div class="card-img">
-                            <img src="assets/images/card.webp" width="100%" alt="pic">
-                        </div>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum...</p>
-                        <div class="bottom-card">
-                            <p>Web Development</p>
-                            <button>Enroll Now</button>
-                        </div>  
-                    </div>
-                </div>
-                    <div class="card">
-                        <div class="inner-card">
-                            <div class="card-img">
-                                <img src="assets/images/card.webp" width="100%" alt="pic">
-                            </div>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum...</p>
-                            <div class="bottom-card">
-                                <p>Web Development</p>
-                                <button>Enroll Now</button>
-                            </div>  
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="inner-card">
-                            <div class="card-img">
-                                <img src="assets/images/card.webp" width="100%" alt="pic">
-                            </div>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum...</p>
-                            <div class="bottom-card">
-                                <p>Web Development</p>
-                                <button>Enroll Now</button>
-                            </div>  
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div class="cards"></div>
         </section>
 
         <section class="courses-categories">
@@ -91,7 +70,18 @@ function renderHomePage() {
             </div>
             <button>View All</button>
         </section>
-    `
+    `;
+    const aboutusBtn = document.querySelector('.aboutus-btn');
+    aboutusBtn.addEventListener('click', () => renderAboutPage());
+    const cards = document.querySelector('.cards');
+    const filterList = [];
+    let randoms = [];
+    for(let i=0; i<3; i++){
+        let randomNum = Math.floor(Math.random() * 11) + 1
+        randoms.push(randoms.includes(randomNum) ? randomNum + 1 : randomNum);  
+        filterList.push(list.find(el => el.id === randoms[i] ));
+    }
+    renderCourses(filterList, cards, showCourseDetails);
 }
 
 function renderAboutPage(){
@@ -144,23 +134,6 @@ function renderAboutPage(){
         </section>
     `;
 }
-
-import { getLevel, filterCourses, toggleAside } from './filter-courses.js';
-
-const list = [
-    { id: 1, instractor: 'mohamed magdy', title: "lorem ipsm dolor sit", category: "Web Development", level: "beginner", price:200, desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum", parts: ['html', 'css', 'js'] },
-    { id: 2, instractor: 'mohamed magdy', title: "lorem ipsm dolor sit", category: "Web Development", level: "advanced", price:300, desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum", parts: ['html', 'css', 'js'] },
-    { id: 3, instractor: 'mohamed magdy', title: "lorem ipsm dolor sit", category: "Web Development", level: "advanced", price:450, desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum", parts: ['html', 'css', 'js'] },
-    { id: 4, instractor: 'mohamed magdy', title: "lorem ipsm dolor sit", category: "UI/UX", level: "intermediate", price:200, desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum",  parts: ['user experience', 'colors'] },
-    { id: 5, instractor: 'mohamed magdy', title: "lorem ipsm dolor sit", category: "UI/UX", level: "intermediate", price:300, desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum",  parts: ['user experience', 'colors'] },
-    { id: 6, instractor: 'mohamed magdy', title: "lorem ipsm dolor sit", category: "UI/UX", level: "beginner", price:100, desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum", parts: ['user experience', 'colors'] },
-    { id: 7, instractor: 'mohamed magdy', title: "lorem ipsm dolor sit", category: "marketing", level: "beginner", price:50, desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum", parts: ['market research', 'digital marketing'] },
-    { id: 8, instractor: 'mohamed magdy', title: "lorem ipsm dolor sit", category: "marketing", level: "beginner", price:150, desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum" , parts: ['market research', 'digital marketing']},
-    { id: 9, instractor: 'mohamed magdy', title: "lorem ipsm dolor sit", category: "marketing", level: "beginner", price:200, desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum" , parts: ['market research', 'digital marketing']},
-    { id: 10, instractor: 'mohamed magdy', title: "lorem ipsm dolor sit", category: "fitness", level: "beginner", price:200, desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum" , parts: ['stretching', 'exercieses', 'nutration']},
-    { id: 11, instractor: 'mohamed magdy', title: "lorem ipsm dolor sit", category: "fitness", level: "beginner", price:200, desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum" , parts: ['stretching', 'exercieses', 'nutration']},
-    { id: 12, instractor: 'mohamed magdy', title: "lorem ipsm dolor sit", category: "fitness", level: "beginner", price:200, desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum" , parts: ['stretching', 'exercieses', 'nutration']},
-];
 
 function renderCourses(list, cards, showCourseDetails) {
     if (!cards) return console.error('Cards container not found!');
@@ -274,6 +247,14 @@ function showCourseDetails(){
     })
 }
 
+
+function renderProfilePage(){
+    const root = document.querySelector('#root');
+    root.innerHTML = `
+
+    `;
+}
+
 function route(){
     const navUl = document.querySelector('nav>ul');
     [...navUl.children].forEach(el =>{
@@ -284,6 +265,8 @@ function route(){
                 renderAboutPage();
             }else if(el.id === 'courses'){
                 renderCoursesPage();
+            }else if(el.id === 'profile'){
+                renderProfilePage();
             }
         });
     });
