@@ -21,7 +21,9 @@ function renderHomePage() {
         <header>
             <div class="bottom-header">
                 <h1>Empowering Minds for a Brighter Future</h1>
-                <img src="./assets/images/header_img.svg" width="50%" alt="pic">
+                <div class="header-img">
+                    <img src="./assets/images/header_img.png" height="100%" alt="pic">
+                </div>
             </div>
         </header>
 
@@ -231,9 +233,12 @@ function renderCourseDetailsPage(id, list){
             </div>
         </main>
 
-        <section class="recommendation-cards cards"></section>   
+        <section class="recommendation-cards">
+            <h2> Recommended Courses </h2>
+            <div class="cards"></div>
+        </section>   
     `
-    const cards = document.querySelector('.recommendation-cards');
+    const cards = document.querySelector('.recommendation-cards .cards');
     const filterList = list.filter(el => el.category === category && el.id !== parseInt(id));
     renderCourses(filterList, cards, showCourseDetails);
 }

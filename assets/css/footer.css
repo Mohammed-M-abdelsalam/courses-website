@@ -1,9 +1,9 @@
 footer{
     display: flex;
     justify-content: space-around;
+    align-items: center;
     width: 90%;
     margin: auto;
-    height: 7rem;
     font-size: clamp(.5rem, 1.5vw, 1rem);
 }
 footer a{
