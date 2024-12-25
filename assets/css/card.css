@@ -61,6 +61,13 @@
     border-radius: 5px;
     cursor: pointer;
 }
+.bottom-card>button:focus{
+    outline: 3px solid var(--diffrentColor);
+}
+.cards>.card:focus-within{
+    box-shadow: 0 0 10px var(--secoundaryColor);
+    transform: translate(0, -5px);
+}
 @media screen and (max-width: 800px){
     .cards>.card{
         width: 100%;

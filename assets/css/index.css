@@ -344,8 +344,10 @@ header{
     cursor: pointer;
 }
 .recommendation-cards{
-    text-align: center;
     margin: 3em 0;
+}
+.recommendation-cards>h2{
+    text-align: center;
 }
 
 @media screen and (max-width: 800px){
@@ -356,4 +358,14 @@ header{
     .recommendation-cards{
         padding: 1em;
     }
+}
+
+/*  search cards */
+.search-cards{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2em;
+    justify-content: center;
+    gap: 1em;
+    margin: 2em 0;
 }

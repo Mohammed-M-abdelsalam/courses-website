@@ -256,9 +256,33 @@ export function showCourseDetails(){
 function renderProfilePage(){
     const root = document.querySelector('#root');
     root.innerHTML = `
-
+    
     `;
 }
+
+// search courses
+function searchCourses(str, list){
+    list = list.filter(el => el.category.toLowerCase().includes(str.trim().toLowerCase()));
+    return list;
+}
+function renderSearchPage(){
+    const root = document.querySelector('#root');
+    const input = document.querySelector('.search-form input');
+    input.addEventListener('keyup', e => {
+        root.innerHTML = `
+            <main class="search-cards">
+               <div class="cards"></div>
+            </main>
+        `;
+        const cards = document.querySelector('.cards');
+        e.preventDefault();
+        const inputData = e.target.value;        
+        const searchList = searchCourses(inputData, list);
+        if(searchList.length === 0) return cards.innerHTML = `<h2>No Courses Found</h2>`;
+        renderCourses(searchList, cards, showCourseDetails);
+    });
+}
+renderSearchPage();
 
 function route(){
     const navUl = document.querySelector('nav>ul');
@@ -279,6 +303,7 @@ function route(){
 
 document.addEventListener('DOMContentLoaded', ()=>{
     renderHomePage();
+    // renderProfilePage();
     route();
 });
 
