@@ -256,7 +256,35 @@ export function showCourseDetails(){
 function renderProfilePage(){
     const root = document.querySelector('#root');
     root.innerHTML = `
-    
+        <div class="profile">
+            <div class="container">
+                <aside>
+                    <div class="content">
+                        <div>M</div>
+                        <h2>Mohamed Magdy</h2>
+                        <p>Frontend Developer</p>
+                    </div>
+                    <button>Edit Profile</button>
+                </aside>
+                <main>
+                    <section class="about-me">
+                        <h2>About ME</h2>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                    </section>
+                    <section class="experience">
+                        <h2>Experience</h2>
+                        <div class="content">
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                            <button>Add Project</button>
+                        </div>
+                    </section>
+                    <section class="work-experience">
+                        <h2>Share work experience</h2>
+                        <button>Add work experience</button>
+                    </section>
+                </main>
+            </div>
+        </div>
     `;
 }
 
@@ -303,7 +331,6 @@ function route(){
 
 document.addEventListener('DOMContentLoaded', ()=>{
     renderHomePage();
-    // renderProfilePage();
     route();
 });
 

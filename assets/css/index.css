@@ -13,6 +13,7 @@
     --mainColor: #E6E6FA;
     --secoundaryColor: #2C3E50;
     --diffrentColor: #B5E61D;
+    --bg-color: #F2F5FA;
     --typoColor: #ffffff;
 }
 body{
@@ -368,4 +369,86 @@ header{
     justify-content: center;
     gap: 1em;
     margin: 2em 0;
+}
+
+/* profile */
+.profile{
+    background-color: var(--bg-color);
+}
+.profile>.container{
+    display: grid;
+    grid-template-areas: 
+    "a a m m m m"
+    ". . m m m m"
+    ;
+    width: 70%;
+    margin: auto;
+    gap: 2em;
+    padding: 3em 5em;
+}
+
+.profile>.container>aside{
+    grid-area: a;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    background-color: var(--typoColor);
+    text-align: center;
+}
+.profile>.container aside .content{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 1em;
+}
+
+.profile>.container aside .content>div{
+    display: grid;
+    place-content: center;
+    width: 2em;
+    height: 2em;
+    margin: 0 auto;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 3rem;
+    background-color: var(--secoundaryColor);
+    color: var(--typoColor);
+}
+
+.profile>.container aside button{
+    background-color: var(--secoundaryColor);
+    color: var(--typoColor);
+    font-weight: bold;
+    font-size: 1rem;
+    padding-block: 0.5em;
+    cursor: pointer;
+}
+
+.profile>.container main{
+    grid-area: m;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+.profile .about-me, .profile .experience .content, .profile .work-experience{
+    background-color: var(--typoColor);
+    padding: 1em;
+}
+.profile .about-me h2, .profile .experience h2, .profile .work-experience h2{
+    margin: 1em 0;
+}
+.profile .experience button, .profile .work-experience button{
+    background-color: var(--secoundaryColor);
+    color: var(--typoColor);
+    font-weight: bold;
+    padding: 0.5em;
+    margin-block: 1em;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 800px){
+    .profile>.container{
+        width: 100%;
+        grid-template-areas: "a" "m";
+    }
 }
