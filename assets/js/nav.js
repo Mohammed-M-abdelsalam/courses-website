@@ -13,5 +13,23 @@ function closeNav(nav){
     closeBtn.addEventListener('click', () => nav.className = '');
     removeEventListener('click', () => nav.className = 'show-nav');
 }
+
 toggleNav(getNav, closeNav);
+
+
+function navAnimation(){
+    const nav = document.querySelector('nav')
+    let current = 0;
+    window.addEventListener('scroll', () => {
+        if(window.scrollY > current && window.scrollY > 100){
+            nav.style.transition = '0.5s';
+            nav.style.transform = 'translateY(-100%)';
+        }else{
+            nav.style.transition = '0s';
+            nav.style.transform = 'translateY(0)';
+        }
+        current = window.scrollY;
+    });
+}
+navAnimation();  //showing nav on scroll up and hiding it on scroll down
 
