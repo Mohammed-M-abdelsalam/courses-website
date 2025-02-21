@@ -205,6 +205,7 @@ function renderCourseDetailsPage(id, list){
     const course = list.find(el => {
         return el.id === parseInt(id);
     });
+    window.scrollTo(0, 0);
     const {title, instractor, level, category, price, desc, parts} = course;
     root.innerHTML = `
         <main class="course-details-main">
@@ -244,11 +245,11 @@ function renderCourseDetailsPage(id, list){
 }
 
 export function showCourseDetails(){
-    const btn = document.querySelectorAll('.course-btn');
-    btn.forEach(el => {
-        el.addEventListener('click', function(){
-            renderCourseDetailsPage(el.dataset.id, list)
-        });
+    const cards = document.querySelector('.cards');
+    cards.addEventListener('click', e => {
+        if(e.target.classList.contains('course-btn')){
+            renderCourseDetailsPage(e.target.dataset.id, list)
+        }
     })
 }
 
@@ -314,18 +315,17 @@ renderSearchPage();
 
 function route(){
     const navUl = document.querySelector('nav>ul');
-    [...navUl.children].forEach(el =>{
-        el.addEventListener('click', e =>{
-            if(el.id === 'home'){
-                renderHomePage();
-            }else if(el.id === 'about'){
-                renderAboutPage();
-            }else if(el.id === 'courses'){
-                renderCoursesPage();
-            }else if(el.id === 'profile'){
-                renderProfilePage();
-            }
-        });
+    const pageRenderers = {
+        home: renderHomePage,
+        about: renderAboutPage,
+        courses: renderCoursesPage,
+        profile: renderProfilePage
+    };
+    navUl.addEventListener('click', (e) => {
+        const renderFunction = pageRenderers[e.target.id || 'home'];
+        if (renderFunction) {
+            renderFunction();
+        }
     });
 }
 
